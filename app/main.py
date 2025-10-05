@@ -1,6 +1,10 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.config.db import Base, engine
+from app.config.settings import settings
+
+from app.routers.product_router import product
 
 app = FastAPI(title="Finexus API")
 
@@ -18,3 +22,6 @@ app.add_middleware(
 
 
 
+Base.metadata.create_all(bind=engine)
+
+app.include_router(product, prefix=settings.PREFIX_API)
