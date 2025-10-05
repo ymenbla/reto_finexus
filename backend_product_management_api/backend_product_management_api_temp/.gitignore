@@ -1,0 +1,59 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.pyc
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+.eggs/
+dist/
+build/
+pip-wheel-metadata/
+*.manifest
+*.spec
+
+# --- Virtualenv / venv ---
+.venv/
+venv/
+env/
+ENV/
+.venv*/
+pip-log.txt
+pip-delete-this-directory.txt
+
+# --- FastAPI / Uvicorn ---
+*.log
+*.db
+*.sqlite3
+
+# --- Configuración ---
+# .env
+# .env.*
+# !.env.example
+
+# --- IDEs ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- Docker ---
+*.pid
+*.seed
+*.pid.lock
+docker-compose.override.yml
+
+# --- OS ---
+.DS_Store
+Thumbs.db
+
+# --- Test ---
+.coverage
+htmlcov/
+.tox/
+.nox/
+.pytest_cache/
