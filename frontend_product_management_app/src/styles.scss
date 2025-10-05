@@ -4,12 +4,18 @@
 
 :root {
   @include mat.toolbar-overrides((
-    container-background-color: #1976d2, // Azul
+    container-background-color: #1976d2,
     container-text-color: white,
   ));
   @include mat.sidenav-overrides((
     container-background-color: #f4f6f9,
     container-text-color: #333,
+  ));
+}
+.sidebar-header {
+  @include mat.toolbar-overrides((
+    container-background-color:  rgba(25, 118, 210, 0.1), // Azul
+    container-text-color: white,
   ));
 }
 
