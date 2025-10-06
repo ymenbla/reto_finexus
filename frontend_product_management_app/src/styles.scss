@@ -3,18 +3,25 @@
 @use '@angular/material' as mat;
 
 :root {
+  --primary-color: #1976d2;
+  --secondary-color: rgba(25, 118, 210, 0.1);
+
   @include mat.toolbar-overrides((
-    container-background-color: #1976d2,
+    container-background-color: var(--primary-color),
     container-text-color: white,
   ));
   @include mat.sidenav-overrides((
     container-background-color: #f4f6f9,
     container-text-color: #333,
   ));
+  @include mat.table-overrides((
+    background-color: white,
+    header-headline-color: #1976d2,
+  ));
 }
 .sidebar-header {
   @include mat.toolbar-overrides((
-    container-background-color:  rgba(25, 118, 210, 0.1), // Azul
+    container-background-color:  var(--secondary-color), // Azul
     container-text-color: white,
   ));
 }
