@@ -31,9 +31,9 @@ pip-delete-this-directory.txt
 *.sqlite3
 
 # --- Configuración ---
-# .env
-# .env.*
-# !.env.example
+.env
+.env.*
+!.env.example
 
 # --- IDEs ---
 .vscode/

@@ -1,0 +1,45 @@
+version: "3.9"
+
+services:
+
+  postgres:
+    image: postgres:14
+    container_name: postgres-dev-ymendoza
+    restart: unless-stopped
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB=app_db
+      POSTGRES_USER=postgres
+      POSTGRES_PASSWORD=postgres
+    ports:
+      - "5432:5432"
+
+  fastapi-app:
+    build:
+      context: ./backend_product_management_api
+      dockerfile: backend_product_management_api/Dockerfile
+    container_name: fastapi-dev-ymendoza
+    restart: unless-stopped
+    depends_on:
+      - postgres
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+
+  angular-app:
+    build:
+      context: ./frontend_product_management_app
+      dockerfile: frontend_product_management_app/Dockerfile
+    container_name: angular17-dev-ymendoza
+    depends_on:
+      - fastapi-app
+    ports:
+      - "4200:4200"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    command: npm run start -- --host 0.0.0.0 --poll 2000
+
