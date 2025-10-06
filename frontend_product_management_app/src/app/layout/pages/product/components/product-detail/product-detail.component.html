@@ -1,0 +1,27 @@
+<div class="detail-container" *ngIf="!loading; else loadingTemplate">
+  <mat-card class="detail-card">
+    <h2>Detalle del producto</h2>
+
+    <div class="detail-content">
+      <p><strong>ID:</strong> {{ product.id }}</p>
+      <p><strong>Nombre:</strong> {{ product.name }}</p>
+      <p><strong>Descripción:</strong> {{ product.description || '**Sin descripción**' }}</p>
+      <p><strong>Precio:</strong> {{ product.price | currency:'COP' }}</p>
+      <p><strong>Stock:</strong> {{ product.stock }}</p>
+      <p><strong>Categoría:</strong> {{ product.category }}</p>
+      <p><strong>Fecha de creación:</strong> {{ product.created_at | date:'medium' }}</p>
+      <p><strong>Última actualización:</strong> {{ product.updated_at | date:'medium' }}</p>
+    </div>
+
+    <div class="actions">
+      <button mat-stroked-button color="primary" (click)="goBack()">Volver al listado</button>
+    </div>
+  </mat-card>
+</div>
+
+<ng-template #loadingTemplate>
+  <div class="loading">
+    <mat-spinner></mat-spinner>
+    <p>Cargando producto...</p>
+  </div>
+</ng-template>

@@ -1,0 +1,42 @@
+.form-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 2rem;
+}
+
+.form-card {
+  width: 500px;
+  padding: 2rem;
+  border-radius: 12px;
+  background-color: #fff;
+
+  h2 {
+    margin-bottom: 1.5rem;
+    text-align: center;
+  }
+
+  .row {
+    margin-bottom: 1rem;
+  }
+
+  .two-columns {
+    display: flex;
+    gap: 1rem;
+
+    mat-form-field {
+      flex: 1;
+    }
+  }
+
+  .full-width {
+    width: 100%;
+  }
+
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+  }
+}
