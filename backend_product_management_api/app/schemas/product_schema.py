@@ -24,7 +24,7 @@ class ProductCreate(Product):
 
 
 class ProductIn(Product):
-    id: int
+    id: Optional[int] = None
     created_at: Optional[datetime] = None
     updated_at: Optional[datetime] = None
 

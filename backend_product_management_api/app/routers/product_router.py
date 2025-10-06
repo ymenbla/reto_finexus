@@ -7,6 +7,13 @@ from app.services.product_service import ProductService
 
 product = APIRouter(tags=["products"])
 
+@product.get("/products/{id}", response_model=ProductOut)
+def one_product(
+    id: int, 
+    db: Session = Depends(get_db)
+):
+    
+    return ProductService(db).one_product(id)
 
 @product.get("/products", response_model=list[ProductOut])
 def all_product(
