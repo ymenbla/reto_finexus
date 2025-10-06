@@ -23,36 +23,27 @@ export class ProductDetailComponent {
   private productService = inject(ProductService);
   private snackBar = inject(MatSnackBar);
 
-  // product!: Product;
-  product: Product = {
-    id: 100,
-    name:"Mojarra Lora",
-    description: "",
-    price: 13900,
-    stock: 10,
-    category: "Pescado",
-    created_at: "",
-    updated_at: ""
-  };
+  product!: Product;
+
   loading = true;
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.loading = false;
-    // if (id) {
-    //   this.productService.getProductById(+id).subscribe({
-    //     next: (data) => {
-    //       this.product = data;
-    //       this.loading = false;
-    //     },
-    //     error: () => {
-    //       this.snackBar.open('Error al cargar producto', 'Cerrar', { duration: 3000 });
-    //       this.router.navigate(['app','products']);
-    //     },
-    //   });
-    // } else {
-    //   this.router.navigate(['app','products']);
-    // }
+
+    if (id) {
+      this.productService.getProductById(+id).subscribe({
+        next: (data) => {
+          this.product = data;
+          this.loading = false;
+        },
+        error: () => {
+          this.snackBar.open('Error al cargar producto', 'Cerrar', { duration: 3000 });
+          this.router.navigate(['app','products']);
+        },
+      });
+    } else {
+      this.router.navigate(['app','products']);
+    }
   }
 
   goBack(): void {

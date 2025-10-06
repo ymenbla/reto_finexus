@@ -53,6 +53,9 @@ export class ProductTableComponent {
     this.errorMessage = '';
     this.productService.getProducts().subscribe({
       next: (products) => {
+        products.sort(
+          (a, b) => new Date(b.updated_at).getTime() - new Date(a.updated_at).getTime()
+        );
         this.dataSource.data = products;
         this.loading = false;
       },

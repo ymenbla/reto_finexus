@@ -34,12 +34,12 @@ export class ProductFormComponent {
     this.form = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       description: [''],
-      price: [null, [Validators.required, Validators.min(0)]],
+      price: [null, [Validators.required, Validators.min(1)]],
       stock: [0, [Validators.required, Validators.min(0)]],
-      category: ['', Validators.required],
+      category: [''],
     });
 
-    // Detecta si hay un id en la URL → modo edición
+
     this.route.paramMap
       .pipe(
         switchMap((params) => {
